@@ -1,0 +1,7 @@
+-- Listing 18-10
+
+DBCC TRACEON (1204, -1);
+GO
+
+DBCC TRACEOFF (1204, -1);
+GO

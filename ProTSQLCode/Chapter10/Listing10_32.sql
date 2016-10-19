@@ -1,0 +1,21 @@
+-- Listing 10-32
+
+CREATE DATABASE [AdventureWorks]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'AdventureWorks2014_Data', FILENAME = N'C:\sqldata\MSSQL12.MSSQLSERVER\MSSQL\DATA\AdventureWorks2014_Data.mdf' , SIZE = 226304KB , MAXSIZE = UNLIMITED, FILEGROWTH = 16384KB ), 
+ FILEGROUP [FILESTREAM1] CONTAINS FILESTREAM  DEFAULT 
+( NAME = N'AdventureWordsFS', FILENAME = N'C:\sqldata\MSSQL12.MSSQLSERVER\MSSQL\DATA\AdventureWordsFS' , MAXSIZE = UNLIMITED)
+ LOG ON 
+( NAME = N'AdventureWorks2014_Log', FILENAME = N'C:\sqldata\MSSQL12.MSSQLSERVER\MSSQL\DATA\AdventureWorks2014_log.ldf' , SIZE = 5696KB , MAXSIZE = UNLIMITED, FILEGROWTH = 10%);
+To create this FILESTREAM filegroup on an already existing database, we used the ALTER DATABASE statement as shown in Listing 10-33.
+Listing 10-33. Adding a FILESTREAM Filegroup to an Existing Database
+ALTER DATABASE AdventureWorks
+ADD FILEGROUP FILESTREAM1 CONTAINS FILESTREAM;
+GO
+ALTER DATABASE AdventureWorks
+ADD FILE
+(
+NAME = N' AdventureWordsFS',
+FILENAME = N' C:\sqldata\MSSQL12.MSSQLSERVER\MSSQL\DATA\AdventureWordsFS' )
+TO FILEGROUP FILESTREAM1;

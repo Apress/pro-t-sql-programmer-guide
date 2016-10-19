@@ -1,0 +1,8 @@
+-- Listing 15-16
+
+var query = from p in db.Persons
+            where p.LastName.Contains("SMI")
+            orderby p.LastName, p.FirstName
+            select p;
+
+

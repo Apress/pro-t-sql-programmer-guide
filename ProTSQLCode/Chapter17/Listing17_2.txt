@@ -1,0 +1,30 @@
+-- Listing 17-2
+
+private void ExecuteSP()
+{
+    SqlConnectionStringBuilder cnString = new SqlConnectionStringBuilder();
+    cnString.DataSource = @”(localdb)\v12.0”;
+    cnString.IntegratedSecurity = true;
+
+    using (SqlConnection cn = new SqlConnection(cnString.ConnectionString))
+    {
+        cn.Open();
+        SqlCommand cmd = new SqlCommand("EXEC dbo.GetProducts", cn);
+        cmd.ExecuteReader();
+    }
+}
+The above code opens the connection to the database synchronously and runs the stored procedure waiting till the entire resultset is returned. Instead of waiting for the process to complete, it would be more efficient to perform this operation asynchronously. Listing 1617-3 shows the above code modified for asynchronous execution. Changes are shown in bold.
+Listing 1617-3. ADO.NET Code to Run Stored Procedure Asynchronously
+private async Task ExecuteSP()
+{
+    SqlConnectionStringBuilder cnString = new SqlConnectionStringBuilder();
+    cnString.DataSource = @”(localdb)\v12.0”;
+    cnString.IntegratedSecurity = true;
+
+    using (SqlConnection cn = new SqlConnection(cnString.ConnectionString))
+    {
+        await cn.OpenAsync();
+        SqlCommand cmd = new SqlCommand("EXEC dbo.GetProducts", cn);
+        await cmd.ExecuteReaderAsync();
+    }
+}

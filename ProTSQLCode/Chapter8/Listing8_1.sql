@@ -1,0 +1,9 @@
+-- Listing 8-1
+
+-- Back up the SMK to a file
+BACKUP SERVICE MASTER KEY TO FILE = 'c:\CH07\S0L2012.SMK' 
+ENCRYPTION BY PASSWORD = 'p@$$w0rd';
+
+-- Restore the SMK from a file 
+RESTORE SERVICE MASTER KEY FROM FILE = 'c:\CH07\S0L2012.SMK' 
+DECRYPTION BY PASSWORD = 'p@$$w0rd';

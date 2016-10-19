@@ -1,0 +1,20 @@
+-- Listing 8-4
+
+USE AdventureWorks2014;
+GO
+
+OPEN MASTER KEY DECRYPTION BY PASSWORD = 'p@$$w0rd' ;
+
+BACKUP MASTER KEY
+   TO FILE = 'c:\CH07\AdventureWorks2012.DMK'
+   ENCRYPTION BY PASSWORD = 'p@$$wOrd';
+
+-- Restore DMK from backup 
+RESTORE MASTER KEY
+  FROM FILE = 'c:\CH07\AdventureWorks2012.DMK'
+  DECRYPTION BY PASSWORD = 'p@$$wOrd'
+  ENCRYPTION BY PASSWORD = '3rt=d4uy';
+
+CLOSE MASTER KEY;
+
+

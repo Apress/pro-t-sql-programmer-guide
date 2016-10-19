@@ -1,0 +1,5 @@
+-- Listing 15-14
+
+var query = from p in db.Persons
+            where p.LastName.Contains("SMI") 
+            select p;

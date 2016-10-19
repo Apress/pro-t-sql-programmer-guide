@@ -1,0 +1,15 @@
+-- Listing 6-11
+
+CHECKPOINT
+GO
+DBCC DROPCLEANBUFFERS
+GO
+DBCC FREEPROCCACHE
+GO
+
+SET STATISTICS IO ON
+
+SELECT * FROM [Person].[Address] WHERE ModifiedDate 
+              BETWEEN '2013-12-01' AND '2013-12-21';
+SELECT * FROM [MOD].[Address] WHERE ModifiedDate 
+              BETWEEN '2013-12-01' AND '2013-12-21';

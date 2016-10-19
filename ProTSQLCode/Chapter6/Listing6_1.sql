@@ -1,0 +1,7 @@
+-- Listing 6-1
+
+IF NOT EXISTS 
+  (SELECT * FROM AdventureWorks2014.sys.data_spaces WHERE TYPE = 'FX')
+ALTER DATABASE AdventureWorks2014
+  ADD FILEGROUP [AdventureWorks2014_mem] CONTAINS MEMORY_OPTIMIZED_DATA
+GO

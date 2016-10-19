@@ -1,0 +1,10 @@
+-- Listing 19-17
+
+CREATE NONCLUSTERED INDEX [IX_Covering_Person_LastName_FirstName_MiddleName] ON [Person].[Person]
+(
+	[LastName] ASC,
+	[FirstName] ASC,
+	[MiddleName] ASC
+) INCLUDE (Title) 
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

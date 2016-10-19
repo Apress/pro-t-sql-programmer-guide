@@ -1,0 +1,4 @@
+StreamReader sr = new StreamReader("c:\\Person_Person.txt");
+string FirstName = null;
+while ((FirstName = sr.ReadLine()) != null) {
+Console.WriteLine(s); } sr.Dispose();

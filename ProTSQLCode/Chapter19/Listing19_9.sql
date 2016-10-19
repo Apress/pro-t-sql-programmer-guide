@@ -1,0 +1,4 @@
+-- Listing 19-9
+
+ALTER TABLE Person.Person REBUILD 
+WITH (DATA_COMPRESSION = PAGE);
